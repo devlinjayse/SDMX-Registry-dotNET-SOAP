@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXStructureBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Concept Structure Module</xs:appinfo>
+    <xs:documentation>The concept structure module defines the structure of concept scheme and concept constructs.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="ConceptSchemeType">
+    <xs:annotation>
+      <xs:documentation>onceptSchemeType describes the structure of a concept scheme. A concept scheme is the descriptive information for an arrangement or division of concepts into groups based on characteristics, which the objects have in common. It contains a collection of concept definitions, that may be arranged in simple hierarchies.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="structure:ItemSchemeType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="common:Annotations" />
+          <xs:element maxOccurs="unbounded" ref="common:Name" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="common:Description" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="structure:Concept" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attribute name="id" type="common:NCNameIDType" use="required">
+          <xs:annotation>
+            <xs:documentation>The id attribute holds the identification of the concept scheme. The type of this id is restricted to the common:NCNNameIDType. This is necessary, since the concept scheme may be used to create simple types in data and metadata structure specific schemas and therefore must be compliant with the NCName type in XML Schema (see common:NCNameIDType for further details).</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Concept" substitutionGroup="structure:Item" type="structure:ConceptType">
+    <xs:annotation>
+      <xs:documentation>Concept describes the details of a concept within a concept scheme.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ConceptBaseType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>ConceptBaseType is an abstract base type the forms the basis of the ConceptType by requiring a name and id, and restricting the content of the id.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="structure:ItemType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="common:Annotations" />
+          <xs:element maxOccurs="unbounded" ref="common:Name" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="common:Description" />
+          <xs:choice minOccurs="0">
+            <xs:element name="Parent" type="common:LocalConceptReferenceType">
+              <xs:annotation>
+                <xs:documentation>Parent captures the semantic relationships between concepts which occur within a single concept scheme. This identifies the concept of which the current concept is a qualification (in the ISO 11179 sense) or subclass.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="id" type="common:NCNameIDType" use="required">
+          <xs:annotation>
+            <xs:documentation>The id attribute holds the identification of the concept. The type of this id is restricted to the common:NCNNameIDType. This is necessary, since concept id may be used to create XML elements and attributes in data and metadata structure specific schemas and therefore must be compliant with the NCName type in XML Schema (see common:NCNameIDType for further details).</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptType">
+    <xs:annotation>
+      <xs:documentation>ConceptType describes the details of a concept. A concept is defined as a unit of knowledge created by a unique combination of characteristics. If a concept does not specify a TextFormat or a core representation, then the representation of the concept is assumed to be represented by any set of valid characters (corresponding to the xs:string datatype of W3C XML Schema).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="structure:ConceptBaseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CoreRepresentation" type="structure:ConceptRepresentation">
+            <xs:annotation>
+              <xs:documentation />
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ISOConceptReference" type="structure:ISOConceptReferenceType">
+            <xs:annotation>
+              <xs:documentation>Provides a reference to an ISO 11179 concept.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptRepresentation">
+    <xs:annotation>
+      <xs:documentation>ConceptRepresentation defines the core representation that are allowed for a concept. The text format allowed for a concept is that which is allowed for any non-target object component.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="structure:RepresentationType">
+        <xs:choice>
+          <xs:element name="TextFormat" type="structure:BasicComponentTextFormatType" />
+          <xs:sequence>
+            <xs:element name="Enumeration" type="common:CodelistReferenceType">
+              <xs:annotation>
+                <xs:documentation>Enumeration references a codelist which enumerates the possible values that can be used as the representation of this concept.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="EnumerationFormat" type="structure:CodededTextFormatType" />
+          </xs:sequence>
+        </xs:choice>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ISOConceptReferenceType">
+    <xs:annotation>
+      <xs:documentation>ISOConceptReferenceType provides a reference to and ISO 11179 concept.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ConceptAgency" type="xs:string" />
+      <xs:element name="ConceptSchemeID" type="xs:string" />
+      <xs:element name="ConceptID" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

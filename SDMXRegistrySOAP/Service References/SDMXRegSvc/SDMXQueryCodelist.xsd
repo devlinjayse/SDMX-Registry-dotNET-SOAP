@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:query="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXQueryBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Code List Query Module</xs:appinfo>
+    <xs:documentation>The code list query module provides the construct of a query for a code list.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="CodelistQueryType">
+    <xs:annotation>
+      <xs:documentation>CodelistQueryType defines the structure of a codelist query. The parameters for the query are contained in the CodelistWhere element. The References element is used to indicate how objects that reference the matched codelist should be returned.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:StructuralMetadataQueryType">
+        <xs:sequence>
+          <xs:element name="ReturnDetails" type="query:StructureReturnDetailsType" />
+          <xs:element ref="query:CodelistWhere" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CodelistWhere" substitutionGroup="query:StructuralMetadataWhere" type="query:CodelistWhereType">
+    <xs:annotation>
+      <xs:documentation>CodelistWhere defines the parameters for a codelist query. All parameters must be matched for an object to satisfy the query. In addition to querying based on the basic maintainable properties, it is also possible to search for a codlist based on the details of its codes. In any case, the codelist will be returned according the indicated return detail.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CodelistWhereType">
+    <xs:annotation>
+      <xs:documentation>CodelistWhereType contains the parameters of a codelist query. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemSchemeWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="URN" type="xs:anyURI" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Version" type="common:VersionQueryType" />
+          <xs:element minOccurs="0" name="VersionTo" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionFrom" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AgencyID" type="query:QueryNestedIDType" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="query:CodeWhere" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attribute fixed="Codelist" name="type" type="common:MaintainableTypeCodelistType" use="optional" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CodeWhere" substitutionGroup="query:ItemWhere" type="query:CodeWhereType">
+    <xs:annotation>
+      <xs:documentation>CodeWhere is used to query for codes matching the parameters supplied. This is an implicit set of "and" parameters, meaning all of the conditions must be met in order to return a match.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CodeWhereType">
+    <xs:annotation>
+      <xs:documentation>CodeWhereType defines a set of parameters for matching a code. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:choice minOccurs="0">
+            <xs:element name="Parent" type="common:LocalCodeReferenceType" />
+          </xs:choice>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

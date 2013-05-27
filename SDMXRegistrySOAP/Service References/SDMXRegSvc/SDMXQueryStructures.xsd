@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:query="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXQueryBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Structures Query Module</xs:appinfo>
+    <xs:documentation>The structures query module provides the construct of a query for all structures, regardless of their type.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="StructuresQueryType">
+    <xs:annotation>
+      <xs:documentation>StructuresQueryType defines the structure of a structures query. The parameters for the query are contained in the StructuresWhere element. The References element, typically used to indicate which objects should be returned, is fixed so that all object matching the parameters are returned..</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:StructuralMetadataQueryType">
+        <xs:sequence>
+          <xs:element name="ReturnDetails" type="query:MaintainableReturnDetailsType" />
+          <xs:element ref="query:StructuresWhere" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StructuresWhere" substitutionGroup="query:StructuralMetadataWhere" type="query:StructuresWhereType">
+    <xs:annotation>
+      <xs:documentation>StructuresWhere defines the parameters for a structures query. All parameters must be matched for an object to satisfy the query. Only the basic maintainable parameters are available.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="StructuresWhereType">
+    <xs:annotation>
+      <xs:documentation>StructuresWhereType contains a set of parameters for a structures query. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:MaintainableWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="URN" type="xs:anyURI" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Version" type="common:VersionQueryType" />
+          <xs:element minOccurs="0" name="VersionTo" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionFrom" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AgencyID" type="query:QueryNestedIDType" />
+        </xs:sequence>
+        <xs:attribute fixed="Any" name="type" type="common:MaintainableTypeCodelistType" use="optional" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:query="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXQueryBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Category Query Module</xs:appinfo>
+    <xs:documentation>The category query module provides the construct of a query for a category scheme.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="CategorySchemeQueryType">
+    <xs:annotation>
+      <xs:documentation>CategorySchemeQueryType defines the structure of a category scheme query. The parameters for the query are contained in the CategorySchemeWhere element. The References element is used to indicate how objects that reference the matched category scheme should be returned.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:StructuralMetadataQueryType">
+        <xs:sequence>
+          <xs:element name="ReturnDetails" type="query:StructureReturnDetailsType" />
+          <xs:element ref="query:CategorySchemeWhere" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategorySchemeWhere" substitutionGroup="query:StructuralMetadataWhere" type="query:CategorySchemeWhereType">
+    <xs:annotation>
+      <xs:documentation>CategorySchemeWhere contains the parameters for a category scheme query. All parameters must be matched for an object to satisfy the query. In addition to querying based on the basic maintainable properties, it is also possible to search for a category scheme based on the details of its categories. In any case, the category scheme will be returned according the indicated return detail.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CategorySchemeWhereType">
+    <xs:annotation>
+      <xs:documentation>CategorySchemeWhereType defines the parameters of a category scheme query. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemSchemeWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="URN" type="xs:anyURI" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Version" type="common:VersionQueryType" />
+          <xs:element minOccurs="0" name="VersionTo" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionFrom" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AgencyID" type="query:QueryNestedIDType" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="query:CategoryWhere" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attribute fixed="CategoryScheme" name="type" type="common:MaintainableTypeCodelistType" use="optional" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategoryWhere" substitutionGroup="query:ItemWhere" type="query:CategoryWhereType">
+    <xs:annotation>
+      <xs:documentation>CategoryWhere is used to query for categories matching the parameters supplied. It allows for nested category queries so that hierarchical categories can be queried explicitly by their nested level, although a top level category will always result in a search for categories at any level. This is an implicit set of "and" parameters, meaning all of the conditions must be met in order to return a match.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CategoryWhereType">
+    <xs:annotation>
+      <xs:documentation>CategoryQueryWhereType contains a set of parameters for matching a category. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:choice minOccurs="0">
+            <xs:sequence maxOccurs="unbounded">
+              <xs:element ref="query:CategoryWhere" />
+            </xs:sequence>
+          </xs:choice>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

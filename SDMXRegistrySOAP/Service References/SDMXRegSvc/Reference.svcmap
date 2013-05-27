@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="890f03b6-b72f-429a-b258-13c4fb4c7fb8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://test.sdmxregistry.org/ws/soap/sdmxSoap.wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SDMXQueryData.xsd" MetadataType="Schema" ID="0635e0a9-e068-45e4-9901-07fca7f68a17" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryData.xsd" />
+    <MetadataFile FileName="SDMXStructureProcess.xsd" MetadataType="Schema" ID="16c08154-0b3c-4210-a4ed-13b860debfa3" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureProcess.xsd" />
+    <MetadataFile FileName="SDMXQueryCategorisation.xsd" MetadataType="Schema" ID="378fccaa-ac06-413e-9ad2-d7ade93c1b59" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryCategorisation.xsd" />
+    <MetadataFile FileName="SDMXStructureDataStructure.xsd" MetadataType="Schema" ID="6622887a-7046-4f3c-900f-002a94ac42ed" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureDataStructure.xsd" />
+    <MetadataFile FileName="SDMXMetadataGeneric.xsd" MetadataType="Schema" ID="702cc86d-1a8b-46c3-be01-56002d6fb554" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXMetadataGeneric.xsd" />
+    <MetadataFile FileName="SDMXQueryProvisionAgreement.xsd" MetadataType="Schema" ID="0e74c821-6b7d-4abe-830b-8935ad6f9064" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryProvisionAgreement.xsd" />
+    <MetadataFile FileName="SDMXRegistrySubscription.xsd" MetadataType="Schema" ID="cc18f6a1-2a07-4a53-bd2f-1ac7355efc4a" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXRegistrySubscription.xsd" />
+    <MetadataFile FileName="SDMXQueryStructures.xsd" MetadataType="Schema" ID="5d64a551-e886-4638-a96a-d858f6dd70a3" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryStructures.xsd" />
+    <MetadataFile FileName="SDMXCommonReferences.xsd" MetadataType="Schema" ID="a31e9c06-29e6-4ff8-9065-0dc8c165e324" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXCommonReferences.xsd" />
+    <MetadataFile FileName="SDMXQueryMetadata.xsd" MetadataType="Schema" ID="8fc7f45c-7836-48a5-ad1b-a55ebe613928" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryMetadata.xsd" />
+    <MetadataFile FileName="SDMXStructureBase.xsd" MetadataType="Schema" ID="96db5027-f5e4-4996-95a0-4227e8b2a1ad" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureBase.xsd" />
+    <MetadataFile FileName="xml.xsd" MetadataType="Schema" ID="573ed1b2-6b0e-49d1-a8d2-1c18e16ab64d" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/xml.xsd" />
+    <MetadataFile FileName="SDMXRegistryBase.xsd" MetadataType="Schema" ID="bd09995d-23a6-46f4-b4e2-7796ab8ab38c" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXRegistryBase.xsd" />
+    <MetadataFile FileName="SDMXDataStructureSpecific.xsd" MetadataType="Schema" ID="42f32f6a-94ef-4036-89b9-1f30f4341bf0" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXDataStructureSpecific.xsd" />
+    <MetadataFile FileName="SDMXQueryCategory.xsd" MetadataType="Schema" ID="6b0c451b-5fdd-4053-9b79-c7834e667e44" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryCategory.xsd" />
+    <MetadataFile FileName="SDMXStructureConstraint.xsd" MetadataType="Schema" ID="618c1b72-4f57-4787-96d1-9e770ecc9c74" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureConstraint.xsd" />
+    <MetadataFile FileName="SDMXQueryHierarchicalCodelist.xsd" MetadataType="Schema" ID="e3ff6fea-d9f3-4dff-a146-67281e0c10c0" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryHierarchicalCodelist.xsd" />
+    <MetadataFile FileName="sdmxSoap.wsdl" MetadataType="Wsdl" ID="01de9d44-b37e-48a0-943e-cb77e9413393" SourceId="1" SourceUrl="http://test.sdmxregistry.org/ws/soap/sdmxSoap.wsdl" />
+    <MetadataFile FileName="SDMXQueryProcess.xsd" MetadataType="Schema" ID="94132874-3b6c-4061-85fa-1c8c9495f542" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryProcess.xsd" />
+    <MetadataFile FileName="SDMXStructureStructureSet.xsd" MetadataType="Schema" ID="242494a3-e1a1-42eb-9a3d-23ba4b7d7b8d" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureStructureSet.xsd" />
+    <MetadataFile FileName="SDMXQueryDataStructure.xsd" MetadataType="Schema" ID="344e4c18-5f2a-4226-ad41-700dfa8c3ac8" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryDataStructure.xsd" />
+    <MetadataFile FileName="SDMXStructureOrganisation.xsd" MetadataType="Schema" ID="fcc836e7-f1f0-4ada-8c4f-502701e48ff6" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureOrganisation.xsd" />
+    <MetadataFile FileName="SDMXMessage.xsd" MetadataType="Schema" ID="7af42a0b-bad1-4f08-8b9a-0439495ed2bb" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXMessage.xsd" />
+    <MetadataFile FileName="SDMXQueryReportingTaxonomy.xsd" MetadataType="Schema" ID="6b79424c-c12c-488f-8352-21f6fbfd8198" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryReportingTaxonomy.xsd" />
+    <MetadataFile FileName="SDMXQueryBase.xsd" MetadataType="Schema" ID="c336cb55-5617-4fe3-9d7b-6f0a1de5033a" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryBase.xsd" />
+    <MetadataFile FileName="SDMXStructureReportingTaxonomy.xsd" MetadataType="Schema" ID="88e81c13-7cad-4619-ad2c-4c4c79a719d4" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureReportingTaxonomy.xsd" />
+    <MetadataFile FileName="SDMXDataGenericBase.xsd" MetadataType="Schema" ID="a5064f5a-f469-40c1-ac52-f14d9e509c47" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXDataGenericBase.xsd" />
+    <MetadataFile FileName="SDMXStructureHierarchicalCodelist.xsd" MetadataType="Schema" ID="98f9b233-0fbd-4e77-9519-c336605b3bd5" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureHierarchicalCodelist.xsd" />
+    <MetadataFile FileName="SDMXQueryCodelist.xsd" MetadataType="Schema" ID="bfc83204-d6ea-4744-9aad-8ca94d2882d2" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryCodelist.xsd" />
+    <MetadataFile FileName="SDMXRegistryRegistration.xsd" MetadataType="Schema" ID="56eb7e46-8c92-4dbf-aa25-0d9343c81fc5" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXRegistryRegistration.xsd" />
+    <MetadataFile FileName="SDMXQuerySchema.xsd" MetadataType="Schema" ID="ed604be4-716d-4089-a2d2-86a053463802" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQuerySchema.xsd" />
+    <MetadataFile FileName="SDMXStructureConcept.xsd" MetadataType="Schema" ID="fc3233b8-5609-4933-8568-699bba8ca333" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureConcept.xsd" />
+    <MetadataFile FileName="SDMXMetadataStructureSpecific.xsd" MetadataType="Schema" ID="70c57ef1-24a4-4288-8486-8543001d81eb" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXMetadataStructureSpecific.xsd" />
+    <MetadataFile FileName="SDMXCommon.xsd" MetadataType="Schema" ID="1c37d590-ebd6-4c02-b866-df49c6e4d784" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXCommon.xsd" />
+    <MetadataFile FileName="SDMXQueryMetadataflow.xsd" MetadataType="Schema" ID="dbe7ee44-1c9f-4cd6-b47e-9fba42eb6656" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryMetadataflow.xsd" />
+    <MetadataFile FileName="SDMXStructureMetadataStructure.xsd" MetadataType="Schema" ID="d6031c93-2136-4d0c-bea0-405a3794ea5f" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureMetadataStructure.xsd" />
+    <MetadataFile FileName="SDMXDataGenericTimeSeries.xsd" MetadataType="Schema" ID="0193bec7-1bad-4e51-8c43-7bacd5ffd4e3" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXDataGenericTimeSeries.xsd" />
+    <MetadataFile FileName="SDMXQueryConcept.xsd" MetadataType="Schema" ID="ce524e2d-4baa-48c4-94f4-2393ad5fca43" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryConcept.xsd" />
+    <MetadataFile FileName="SDMXDataStructureSpecificTimeSeries.xsd" MetadataType="Schema" ID="69a5b5cf-2861-40a1-9285-b325eb636497" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXDataStructureSpecificTimeSeries.xsd" />
+    <MetadataFile FileName="SDMXStructureCategory.xsd" MetadataType="Schema" ID="ccbb4a8e-d82b-4649-80e0-a86bf2714506" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureCategory.xsd" />
+    <MetadataFile FileName="SDMXRegistryStructure.xsd" MetadataType="Schema" ID="09e392f7-33b0-4827-9fe9-dbe800583963" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXRegistryStructure.xsd" />
+    <MetadataFile FileName="SDMXQueryDataflow.xsd" MetadataType="Schema" ID="db2d7e18-5ea5-4a09-a391-9faa83d4f784" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryDataflow.xsd" />
+    <MetadataFile FileName="SDMXQueryStructureSet.xsd" MetadataType="Schema" ID="d0dcea30-d8aa-40c7-9975-15f7e9359fc3" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryStructureSet.xsd" />
+    <MetadataFile FileName="SDMXStructureDataflow.xsd" MetadataType="Schema" ID="80eaf290-068a-4aa3-9a6c-3e484735f57c" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureDataflow.xsd" />
+    <MetadataFile FileName="SDMXQueryMetadataStructure.xsd" MetadataType="Schema" ID="9650bbe2-e4f8-4cf4-8f1c-72451a74eae2" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryMetadataStructure.xsd" />
+    <MetadataFile FileName="SDMXStructureProvisionAgreement.xsd" MetadataType="Schema" ID="8e6f3212-9e09-44d0-8483-78f7780e9bcb" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureProvisionAgreement.xsd" />
+    <MetadataFile FileName="SDMXQueryOrganisation.xsd" MetadataType="Schema" ID="f3857771-ea09-48f2-96f4-f147b7bf7a4f" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryOrganisation.xsd" />
+    <MetadataFile FileName="SDMXMessageFooter.xsd" MetadataType="Schema" ID="3d4f8c5a-2650-4b5a-a51e-ba2cb14bc05c" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXMessageFooter.xsd" />
+    <MetadataFile FileName="SDMXDataStructureSpecificBase.xsd" MetadataType="Schema" ID="0efab08a-e8e7-468f-8f31-c30ffa1fd234" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXDataStructureSpecificBase.xsd" />
+    <MetadataFile FileName="SDMXStructure.xsd" MetadataType="Schema" ID="ac609a63-7de4-4181-b0b1-c3c0f6a836e4" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructure.xsd" />
+    <MetadataFile FileName="SDMXStructureCategorisation.xsd" MetadataType="Schema" ID="ba000374-2bdf-472e-8902-85c4baf5cd28" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureCategorisation.xsd" />
+    <MetadataFile FileName="SDMXStructureCodelist.xsd" MetadataType="Schema" ID="57e11c92-1ae2-4bb0-8ca3-d9d4a750b0f8" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureCodelist.xsd" />
+    <MetadataFile FileName="SDMXStructureMetadataflow.xsd" MetadataType="Schema" ID="3691a596-d700-4cf7-92d7-0ca7b9bdfc03" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXStructureMetadataflow.xsd" />
+    <MetadataFile FileName="SDMXRegistry.xsd" MetadataType="Schema" ID="ad3864c5-bb5c-41e6-be35-fc7af237194d" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXRegistry.xsd" />
+    <MetadataFile FileName="SDMXQuery.xsd" MetadataType="Schema" ID="d9fb8041-4cf8-44a1-ade1-94192583a945" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQuery.xsd" />
+    <MetadataFile FileName="SDMXQueryConstraint.xsd" MetadataType="Schema" ID="6fa8cd1b-bda6-40ac-b64f-5ec93aba31f0" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXQueryConstraint.xsd" />
+    <MetadataFile FileName="SDMXDataGeneric.xsd" MetadataType="Schema" ID="30126d9a-b66b-43b7-95be-454e3e93e241" SourceId="1" SourceUrl="http://test.sdmxregistry.org/schemas/v2_1/SDMXDataGeneric.xsd" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

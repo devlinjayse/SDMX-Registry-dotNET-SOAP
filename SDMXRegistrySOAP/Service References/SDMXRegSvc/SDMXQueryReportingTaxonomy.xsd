@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:query="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXQueryBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Reporting Taxonomy Query Module</xs:appinfo>
+    <xs:documentation>The reporting taxonomy query module provides the construct of a query for a reporting taxonomy.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="ReportingTaxonomyQueryType">
+    <xs:annotation>
+      <xs:documentation>ReportingTaxonomyQueryType defines the structure of a reporting taxonomy query. The parameters for the query are contained in the ReportingTaxonomyWhere element. The References element is used to indicate how objects that are referenced from the reporting taxonomy should be returned.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:StructuralMetadataQueryType">
+        <xs:sequence>
+          <xs:element name="ReturnDetails" type="query:StructureReturnDetailsType" />
+          <xs:element ref="query:ReportingTaxonomyWhere" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReportingTaxonomyWhere" substitutionGroup="query:StructuralMetadataWhere" type="query:ReportingTaxonomyWhereType">
+    <xs:annotation>
+      <xs:documentation>ReportingTaxonomyWhere contains the parameters for a reporting taxonomy query. All parameters must be matched for an object to satisfy the query. In addition to querying based on the basic maintainable properties, it is also possible to search for a reporting taxonomy based on the details of its reporting categories. In any case, the reporting taxonomy will be returned according the indicated return detail.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ReportingTaxonomyWhereType">
+    <xs:annotation>
+      <xs:documentation>ReportingTaxonomyWhereType defines the parameters of a reporting taxonomy query. All supplied parameters must be matched in order for an object to satisfy the query. In addition to querying based on the base maintainable parameters, it is also possible to search for taxonomies that contain particular reporting categories, and on the root level structure definitions of the taxonomy.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemSchemeWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="URN" type="xs:anyURI" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Version" type="common:VersionQueryType" />
+          <xs:element minOccurs="0" name="VersionTo" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionFrom" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AgencyID" type="query:QueryNestedIDType" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="query:ReportingCategoryWhere" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attribute fixed="ReportingTaxonomy" name="type" type="common:MaintainableTypeCodelistType" use="optional" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReportingCategoryWhere" substitutionGroup="query:ItemWhere" type="query:ReportingCategoryWhereType">
+    <xs:annotation>
+      <xs:documentation>ReportingCategoryWhere is used to query for reporting categories matching the parameters supplied. It allows for nested reporting category queries so that hierarchical reporting categories can be queried explicitly by their nested level, although a top level reporting category will always result in a search for reporting categories at any level. This is an implicit set of "and" parameters, meaning all of the conditions must be met in order to return a match.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ReportingCategoryWhereBaseType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>ReportingCategoryWhereBaseType is an abstract base type that forms the basis for the ReportingCategoryQueryType.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:choice minOccurs="0">
+            <xs:sequence maxOccurs="unbounded">
+              <xs:element ref="query:ReportingCategoryWhere" />
+            </xs:sequence>
+          </xs:choice>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReportingCategoryWhereType">
+    <xs:annotation>
+      <xs:documentation>ReportingCategoryWhereType contains a set of parameters for matching a reporting category. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="query:ReportingCategoryWhereBaseType">
+        <xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProvisioningMetadata" type="common:StructureUsageReferenceType">
+            <xs:annotation>
+              <xs:documentation>ProvisioningMetadata is used to query for a reporting category where the structure usages referenced are referenced by the reporting category.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="StructuralMetadata" type="common:StructureReferenceType">
+            <xs:annotation>
+              <xs:documentation>StructuralMetadata is used to query for a reporting category where the structures referenced are referenced by the reporting category.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:choice>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

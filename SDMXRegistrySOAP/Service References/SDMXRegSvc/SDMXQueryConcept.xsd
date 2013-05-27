@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:query="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXQueryBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Concept Query Module</xs:appinfo>
+    <xs:documentation>The concept query module provides the construct of a query for a concept schemes.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="ConceptSchemeQueryType">
+    <xs:annotation>
+      <xs:documentation>ConceptSchemeQueryType defines the structure of a category scheme query. The parameters for the query are contained in the ConceptSchemeWhere element. The References element is used to indicate how objects that reference or are referenced from the matched concept scheme should be returned.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:StructuralMetadataQueryType">
+        <xs:sequence>
+          <xs:element name="ReturnDetails" type="query:StructureReturnDetailsType" />
+          <xs:element ref="query:ConceptSchemeWhere" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConceptSchemeWhere" substitutionGroup="query:StructuralMetadataWhere" type="query:ConceptSchemeWhereType">
+    <xs:annotation>
+      <xs:documentation>ConceptSchemeWhere defines the parameters for a concept scheme query. All parameters must be matched for an object to satisfy the query. In addition to querying based on the basic maintainable properties, it is also possible to search for a concept scheme based on the details of its concepts. In any case, the concept scheme will be returned according the indicated return detail.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ConceptSchemeWhereType">
+    <xs:annotation>
+      <xs:documentation>ConceptSchemeWhereType contains the parameters of a concept scheme query. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemSchemeWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="URN" type="xs:anyURI" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Version" type="common:VersionQueryType" />
+          <xs:element minOccurs="0" name="VersionTo" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionFrom" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AgencyID" type="query:QueryNestedIDType" />
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="query:ConceptWhere" />
+          </xs:sequence>
+        </xs:sequence>
+        <xs:attribute fixed="ConceptScheme" name="type" type="common:MaintainableTypeCodelistType" use="optional" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ConceptWhere" substitutionGroup="query:ItemWhere" type="query:ConceptWhereType">
+    <xs:annotation>
+      <xs:documentation>ConceptWhere is used to query for concepts matching the parameters supplied. This is an implicit set of "and" parameters, meaning all of the conditions must be met in order to return a match.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="ConceptWhereBaseType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>ConceptWhereBaseType is an abstract base type that forms the basis for the ConceptWhereType.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:ItemWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:choice minOccurs="0">
+            <xs:element name="Parent" type="common:LocalConceptReferenceType" />
+          </xs:choice>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ConceptWhereType">
+    <xs:annotation>
+      <xs:documentation>ConceptWhereType defines a set of parameters for matching a category. All supplied parameters must be matched in order for an object to satisfy the query. In addition to the base parameters for an item, a concept can be queried based on the item scheme that is used as a core representation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="query:ConceptWhereBaseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Enumeration" type="common:CodelistReferenceType">
+            <xs:annotation>
+              <xs:documentation>Enumeration is used to query for a concept based on the codelist that is uses as the enumeration for its core representation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

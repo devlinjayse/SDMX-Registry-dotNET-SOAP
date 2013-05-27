@@ -1,0 +1,9 @@
+﻿<Window x:Class="SDMXRegistrySOAP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="GetConceptScheme" Height="23" HorizontalAlignment="Left" Margin="35,36,0,0" Name="btnGetConceptScheme" VerticalAlignment="Top" Width="140" Click="btnGetConceptScheme_Click"  />
+        <Label Content="Will call GetConceptScheme and pass AgencyID 'SNZ'." Height="28" HorizontalAlignment="Left" Margin="181,36,0,0" Name="lblGetConceptScheme" VerticalAlignment="Top" Width="285" />
+    </Grid>
+</Window>

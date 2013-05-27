@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{379D03CE-D152-4FC4-A473-80D7F4CACCBB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SDMXRegistrySOAP</RootNamespace>
+    <AssemblyName>SDMXRegistrySOAP</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Service References\SDMXRegSvc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SDMXRegSvc\schema.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\SDMXRegSvc\SDMXCommon.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXCommonReferences.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXDataGeneric.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXDataGenericBase.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXDataGenericTimeSeries.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXDataStructureSpecific.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXDataStructureSpecificBase.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXDataStructureSpecificTimeSeries.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXMessage.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXMessageFooter.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXMetadataGeneric.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXMetadataStructureSpecific.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQuery.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryBase.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryCategorisation.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryCategory.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryCodelist.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryConcept.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryConstraint.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryData.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryDataflow.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryDataStructure.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryHierarchicalCodelist.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryMetadata.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryMetadataflow.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryMetadataStructure.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryOrganisation.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryProcess.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryProvisionAgreement.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryReportingTaxonomy.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQuerySchema.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryStructures.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXQueryStructureSet.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXRegistry.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXRegistryBase.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXRegistryRegistration.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.GenericDataType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.GenericMetadataType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.GenericTimeSeriesDataType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.StructureSpecificDataType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.StructureSpecificMetadataType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.StructureSpecificTimeSeriesDataType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySOAP.SDMXRegSvc.StructureType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\SDMXRegSvc\SDMXRegistryStructure.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXRegistrySubscription.xsd" />
+    <None Include="Service References\SDMXRegSvc\sdmxSoap.wsdl" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructure.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureBase.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureCategorisation.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureCategory.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureCodelist.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureConcept.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureConstraint.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureDataflow.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureDataStructure.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureHierarchicalCodelist.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureMetadataflow.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureMetadataStructure.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureOrganisation.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureProcess.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureProvisionAgreement.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureReportingTaxonomy.xsd" />
+    <None Include="Service References\SDMXRegSvc\SDMXStructureStructureSet.xsd" />
+    <None Include="Service References\SDMXRegSvc\xml.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SDMXRegSvc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SDMXRegSvc\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SDMXRegSvc\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SDMXRegSvc\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

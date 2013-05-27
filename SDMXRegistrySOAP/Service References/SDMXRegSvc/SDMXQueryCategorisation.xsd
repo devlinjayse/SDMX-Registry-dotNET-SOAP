@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns:query="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/query" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXQueryBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Categorisation Query Module</xs:appinfo>
+    <xs:documentation>The categorisation query module provides the construct of a query for a categorisation.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="CategorisationQueryType">
+    <xs:annotation>
+      <xs:documentation>CategorisationQueryType defines the structure of a categorisation query. The parameters for the query are contained in the CategorisationWhere element. The References element is used to indicate how objects that are referenced from the matched categorisations should be returned.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:StructuralMetadataQueryType">
+        <xs:sequence>
+          <xs:element name="ReturnDetails" type="query:MaintainableReturnDetailsType" />
+          <xs:element ref="query:CategorisationWhere" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CategorisationWhere" substitutionGroup="query:StructuralMetadataWhere" type="query:CategorisationWhereType">
+    <xs:annotation>
+      <xs:documentation>CategorisationWhere defines the parameters for a categorisation query. All parameters must be matched for an object to satisfy the query.In addition to querying based on the basic maintainable properties, it is also possible to search based on the source object being categorized and target category the object is categorized against.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="CategorisationWhereBaseType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>CategorisationWhereBaseType is an abstract base type which forms the basis for the CategorisationWhereType.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="query:MaintainableWhereType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annotation" type="query:AnnotationWhereType" />
+          <xs:element minOccurs="0" name="URN" type="xs:anyURI" />
+          <xs:element minOccurs="0" name="ID" type="query:QueryIDType" />
+          <xs:element minOccurs="0" name="Name" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Description" type="query:QueryTextType" />
+          <xs:element minOccurs="0" name="Version" type="common:VersionQueryType" />
+          <xs:element minOccurs="0" name="VersionTo" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionFrom" type="common:TimeRangeValueType" />
+          <xs:element minOccurs="0" name="VersionActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="AgencyID" type="query:QueryNestedIDType" />
+        </xs:sequence>
+        <xs:attribute fixed="Categorisation" name="type" type="common:MaintainableTypeCodelistType" use="optional" />
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CategorisationWhereType">
+    <xs:annotation>
+      <xs:documentation>CategorisationWhereType contains a set of parameters for a categorisation query. All supplied parameters must be matched in order for an object to satisfy the query.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="query:CategorisationWhereBaseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CategoryScheme" type="common:CategorySchemeReferenceType">
+            <xs:annotation>
+              <xs:documentation>CategoryScheme references a category scheme for which categorisations or sought for any of the scheme's categories. Any categorisation which has a target of a category defined in the scheme will be returned.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="TargetCategory" type="common:CategoryReferenceType">
+            <xs:annotation>
+              <xs:documentation>TargetCategory references the category that defines the target of the categorisation (the category which an object is categorized against). Only categorisations which refence the category supplied here will be returned.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ObjectReference" type="common:ObjectReferenceType">
+            <xs:annotation>
+              <xs:documentation>ObjectReference references the object that is the source of the categorisation (the object which is categorized). Only categorisations which reference the object supplied here will be returned.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CategorisedObjectType" type="common:ObjectTypeCodelistType">
+            <xs:annotation>
+              <xs:documentation>CategorisedObjectType is used to specify the type of objects that are categorised by the categorisations being sought. For example, this could be used to find an caategorisation which classifies a code list.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

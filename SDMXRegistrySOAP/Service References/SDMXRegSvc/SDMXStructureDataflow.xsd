@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:common="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" xmlns="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:structure="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" elementFormDefault="qualified" targetNamespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/structure" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="SDMXCommon.xsd" namespace="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common" />
+  <xs:include schemaLocation="SDMXStructureBase.xsd" />
+  <xs:annotation>
+    <xs:appinfo>SDMX Dataflow Structure Module</xs:appinfo>
+    <xs:documentation>The data flow structure module defines the structure of data flow constructs.</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="DataflowType">
+    <xs:annotation>
+      <xs:documentation>DataflowType describes the structure of a data flow. A data flow is defined as the structure of data that will provided for different reference periods. If this type is not referenced externally, then a reference to a key family definition must be provided.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:restriction base="structure:StructureUsageType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="common:Annotations" />
+          <xs:element maxOccurs="unbounded" ref="common:Name" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="common:Description" />
+          <xs:element minOccurs="0" name="Structure" type="common:DataStructureReferenceType">
+            <xs:annotation>
+              <xs:documentation>Structure provides a reference to the data structure definition which defines the structure of all data for this flow.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
